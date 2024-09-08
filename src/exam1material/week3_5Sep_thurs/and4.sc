@@ -5,20 +5,22 @@ import org.sireum._
 import org.sireum.justification._
 import org.sireum.justification.natded.prop._
 
-//Prove the sequent:
-//p, q, r ⊢ r ∧ (q ∧ p)
+//Prove AND is commutative:
+//p ∧ q ⊢ q ∧ p
 
 
-@pure def and2(p: B, q: B, r: B): Unit = {
+@pure def and4(p: B, q: B): Unit = {
   Deduce(
     //@formatter: off
 
-    (p, q, r) |- (r & (q & p))
+    (p & q) |- (q & p)
       Proof(
 
       //PROOF GOES HERE
-
-
+      1 (  p & q  ) by Premise,
+      2 (  q      ) by AndE2(1),
+      3 (  p      ) by AndE1(1),
+      4 (  q & p  ) by AndI(2, 3)
     )
     //@formatter:on
   )
