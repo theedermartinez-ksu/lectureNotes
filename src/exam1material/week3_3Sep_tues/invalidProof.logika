@@ -3,12 +3,17 @@
 //premises: p → q, q
 //Conclusion: p
 
+//invalid argument
+//NOt all premises are not T it is always valid
 
+         *      *     *
 -------------------------
 p q # (p ->: q, q) |- p
 -------------------------
-T T #
-T F #
-F T #
-F F #
+T T #    T      T     T           //A
+T F #    F      F     T
+F T #    T      T     F           //B
+F F #    T      F     F
 -------------------------
+//it doesnt matter that we found A because of B, since all premises were true but conclusion false
+Invalid[F T]

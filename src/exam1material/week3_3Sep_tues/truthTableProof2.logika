@@ -6,4 +6,14 @@
 
 
 //put * over atom itself if no operators
-//don't need to fill out column
+//don't need to fill out column   when we have q we must declare it as Q
+         *       *       *       *
+----------------------------------------------------
+p q # (p -> !q,p -> q, p | q) |- q
+----------------------------------------------------
+T T #     F  F    T      T       T
+T F #     T  T    F      T       F
+F T #     T  F    T      T       T      //true
+F F #     T  T    T      F       F
+-----------------------------------------------------
+valid [T F]

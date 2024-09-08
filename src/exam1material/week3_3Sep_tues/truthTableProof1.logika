@@ -10,18 +10,25 @@
 
 //like Valid [T T T]
 //for example
+//coma separated list of the arguments
+// proves (sideways t)
+//top level operator of each premise and the conclusion
+//CREATE TURNSTYE BAR DASH
 
+//a combined truth table!!
 
            *    *     *            *
 ---------------------------------------
 p q r # (p | q, !q, p ->: r) |-  r & p
 ---------------------------------------
-T T T #
-T T F #
-T F T #
-T F F #
-F T T #
-F T F #
-F F T #
-F F F #
+T T T #    T    F     T            T
+T T F #    T    F     F            F
+T F T #    T    T     T            T  //THIS ONE
+T F F #    T    T     F            F
+F T T #    T    F     T            F
+F T F #    T    F     T            F
+F F T #    F    T     T            F
+F F F #    F    T     T            F
 ---------------------------------------
+//WE LOOK FOR THE THREE PREMISES TO BE ALL TRUE
+Valid [T F T]

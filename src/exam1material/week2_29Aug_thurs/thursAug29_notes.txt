@@ -164,6 +164,8 @@ if you can enroll, you have taken the prereq
 They are equivalent because for every truth
 assignment, they have the same output.
 
+when all their inputs are the same, the output is the same
+
 (equiv1.logika and equiv2.logika)
 
 

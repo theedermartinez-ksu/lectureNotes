@@ -67,20 +67,30 @@ one truth assignment that makes the statement true
 
 - what kind of statement is satisfiable? what kind is not?
 
+tautology and contingent - yes
+contradictory - no
 
 
 
 Example: (p → ¬q) → r
 
 Is it satisfiable? How could we show it?
+we can either - do the whole truth table
+              - or find a value that is true
 
 
-
+ p q r
+ f f t
+ //it does not matter if we put r = t
 
 
 Is (p V q) ^ ¬p ^ ¬q satisfiable?    How could we show it?
+// we can see that it is a contradiction
+//at least p or q has to be true, but not p and not q.
 
+i <3 u qtpie
 
+if we have to prove it! we must do a truth table!!!
 /////////////////////////////////
 
 Proving an argument.
@@ -91,11 +101,20 @@ Proving an argument.
     from our premises.
 
 
---> What do we want to show?
 
+
+--> What do we want to show?
+we want to show that the conclusion follows from the premises, every time all the premises are true, then
+ the conclusion is also true
+ //all we want is if--premises then conclusion
+ // if we find a time that all the premises are true, then conclusion is true
 ///
 
 Proofs with truth tables.
+//we can make a truth table for all premises and all conclusions
+//if i made a truth table for a ll premises, we want to check
+//every value on list aprears true for conclusion
+
 
 Suppose we know:
 
@@ -110,14 +129,28 @@ I want to prove:
         and I am in the CS department.
 
 --> How would we translate to propositional logic?
+//if we want to prove an english logic, we make it into prop logic.
+//atoms
+
+p: i am in the cs dep
+q: im in the ece dep
+r: i can log into the cs lab comp
+
 
 
 
 Translations:
+p V Q
+!q
 
+p -> r
+
+conclusion:
+r ^ p
+
+TRUTHTABLEPROOF.logka
 
 --> How might we prove this with truth tables?
-
 
 --> what idea do we want to demonstrate?
 
@@ -168,8 +201,8 @@ Example:
 
 Premises:
 
-    If it is sunny, then I wear sunscreen.
-
+    If it is sunny, then I wear sunscreen.\
+    p->!
     I wear sunscreen.
 
 
@@ -180,6 +213,8 @@ Proposed conclusion:
 
 1) Translate to propositional logic
 
+p: it is sunny
+q: I wear sunscreen
 
 
 
@@ -189,7 +224,8 @@ Proposed conclusion:
 
 
 
-
+consider truth assignemtn p = F, q= T
+    hre all premises are true but the conclusion is false
 
 ////////////////////////////
 
@@ -203,7 +239,9 @@ Showing arguments are invalid in Logika
 
 Downside of proofs with truth tables?
 
-
+truth tables to prove propositional logic
+    -too much writting
+    -
 
 
 
@@ -226,7 +264,6 @@ New idea: demonstrate conclusion follows from premises using
         lets us extract pieces from a claim with that operator
 
 --> apply these rules to create new claims that logically follow
-
 
 
 /////////////////////////////////
@@ -259,7 +296,8 @@ AND rules idea.
 
 
    --> in what situations do you think we could do that?
-
+    P
+    Q       if we know p is true, q is true. If we have two claims separetely true,together true
 
 
 
@@ -268,12 +306,13 @@ AND rules idea.
 
     --> what new claims would make sense using that statement?
 
-
+    p: T
+    q: T
 
 
     --> what happened to the AND operator in both cases?
 
-
+    and elimination rule!!
 
 //////////////////////////
 
@@ -329,7 +368,7 @@ Natural deduction proof syntax.
 
 (premises) ⊢ (conclusion)
 Proof(
-    1 (  claim          ) by Justification,
+    1 (  claim          ) by Justification, (and introduction or some rule)
     2 (  claim          ) by Justification,
     ...
     10 (  conclusion    ) by Justification
