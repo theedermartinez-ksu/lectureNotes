@@ -3,16 +3,6 @@ HW 4 due tonight
 Hardest problems: proving equivalence on #6 and #7
 
 #6: p → q   equivalent to   ¬p ∨ q
-//showing that an iplies statement can be showed as an and statement
-//1st directiion is more difficult to prove. we have nothing to work with. We
-//if we ever have something we are trying to prove, but we see negation, it is good to try
-// Proof by Contradiction
-//(! RHS) and our goal is F
-//we know we have to use the premise, and only can contradict with RHS
-if we have !p by itself,  if we can get p
-// goal: want p which would give me q then use or I to get not p or q
-// !p or q to give me contradiction
-// contraction
 
     p → q  ⊢  ¬p ∨ q
 
@@ -20,27 +10,14 @@ if we have !p by itself,  if we can get p
 
    ¬p ∨ q   ⊢  p → q
 
-   //implies, we assume p
-   // assume p, goal q
-   // use or e on the premise ( bottom elimination where if we find a contradiction, )
-   // goal q
-
 
 #7: ¬(p → q)    equivalent to   p ∧ ¬q
 
     ¬(p → q)  ⊢  p ∧ ¬q
-       //when trying to prove and p and q it might not work
-       //we see negation, we try pbc
-            // ! p ∧ ¬q
-            // we can contradict with the premise
-            //(f) contradiction
-
 
 
     p ∧ ¬q   ⊢   ¬(p → q)
 
-    FOLLOW PATTER FOR NEGI
-        assume p-> q
 
 
 HW 5 will be posted after class, due Tues Oct 1
