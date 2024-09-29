@@ -261,11 +261,11 @@ Example:
     Jill is taking: CIS 301, MATH 510, HIST 251, MUSIC 170
 
 
-    What is the value of C(Bob)?
+    What is the value of C(Bob)? False bob is not in 301
 
-    What is the value of C(Jill)?
+    What is the value of C(Jill)? true vc Jill is in 301
 
-    What is the value of C(Bob) ⋀ C(Jill)?
+    What is the value of C(Bob) ⋀ C(Jill)? F
 
 
 ////////////////
@@ -273,56 +273,82 @@ Example:
 Quantifiers and predicates
 
 Domain: {strawberry, blueberry, banana, orange, grapefruit, apple}
-
+is fruit
 Berry(x): x is a berry
 Citrus(x): x is a citrus fruit
 Peel(x): x has a peel (that needs to be removed before eating)
 Seeds(x): x contains inedible seeds
 Bite(x): f is bite-sized
 
-Berry(strawberry) -
-Citrus(strawberry) -
-Peel(strawberry) -
-Seeds(strawberry) -
-Bite(strawberry) -
+Berry(strawberry) - Yes true
+Citrus(strawberry) - No false
+Peel(strawberry) - No false
+Seeds(strawberry) - no false
+Bite(strawberry) - Yes true
 
 
 
 Write each statement in English. Is each one true or false?
 
 ∀ x (Berry(x))
+all fruits are berry
+false since banana is not a very
 
+for all x, x is very
+x is a fruit
 
+All fruits are berries!!! <-- write like this
+
+Berry(strawberry) & Berry(blueberry )& Berry(banana) & Berry(orange)
+
+FOR ALL STATEMENT IS A GIGANT AND STATEMETNT
 
     --> how could we express the same statement in our domain
     WITHOUT a quantifier?
 
-
+∀ = AND
 
 
 ///
 
 ∃ x (Citrus(x) ⋀ Seeds(x))
 
+∃ - there exists
+x - a fruit
+that is citrus and uneatable seeds
+
+there is a fruit thta is a citrus and uneatable seeds
 
 
     --> how could we express the same statement in our domain
     WITHOUT a quantifier?
 
+TRUE - AN ORANGE
 
+∃ = OR
+
+CITRUS(strawbery) ^ seeds (strawberry) || citrus(
 
 ///
 
 ∀ x (Berry(x) ⋀ Bite(x))
 
+For all fruits
+all fruits are berries and are bite sized //all fruits have to be berries and bite sized
 
+false an apple is not aberry or bite sized
 
 
 ///
 
 ∀ x (Berry(x) → Bite(x))
 
+for all fruits
+if they are berries then they are bite sized
 
+true
+
+all berries are bite sized
 
 ///
 
@@ -330,7 +356,17 @@ Write each statement in English. Is each one true or false?
 
 Can you think of another way to write the same thing?
 
+//first look without not
 
+for all fruits need to be pealed
+NOT all fruits need to be pealed
+
+initially ¬((Peel(strawberry)) ^ (Peel(blueberry))... ^ ¬(Peel(strawberry)) // spead the negative and switch elements
+
+!!(Peel(strawberry)) || !(Peel(blueberry))...
+
+
+equivalent to: ∃ x !peel(x)
 
 
 
@@ -340,28 +376,40 @@ Can you think of another way to write the same thing?
 
 ¬(∀ x (Seeds(x) → Citrus(x)))
 
+for all fruits, if they have uneatable seeds then they are citrus
 
+not all fruits that has unableable seeds that is citrus
+
+true - an apple has inedible seeds but isn't
 
 Can you think of another way to write the same thing?
+
+∃ x (seeds(x) ^ !citrus())
 
 ///
 
 ∀ x ¬Peel(x)
 
 
+all fruits dont need to be pealed
 
+false - banana
+
+!(∃ x peel(x))
+there exits, (t
 
 ///
 
 ¬(∃ x Berry(x))
 
+there does not exits
 
 
 
 ///
 
 ¬(∃ x (Peel(x) ⋀ Citrus(x)))
-
+there does not exits a fruit that we need to peal and is citruss
 
 
 
@@ -370,19 +418,32 @@ Can you think of another way to write the same thing?
 ∃ x ¬(Peel(x) ⋀ Seeds(x))
 
 
+There exists a fruit that does not both need to be peeled and have seeds
 
+or there exiists a fruit that does not need to be peeled or does not have seeds
 
 ///
 
 ∃ x (Citrus(x) → Berry(x))
 
+there exits (with implies)
 
+there exits a fruits if the cruit is citrus then it is a berry
+
+remember the e is or so
+
+(Citrus(strawberry ) → Berry(strawvery)) ||.....
+
+this whole steemtnt is true if a fruit is not citrus
+
+we probably dont want this, we probably want to say ^ to connect to qualities that we need
+to conenct with an and!!
 
 /////////////////
 
-For all: usually connect with...
+For all: usually connect with... ->
 
-There exists: usually connect with...
+There exists: usually connect with... ^
 
 
 //////////////////
