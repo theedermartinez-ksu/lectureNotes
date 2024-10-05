@@ -25,34 +25,34 @@ Today:
 Evaluating predicate logic statements
 
 1) ∀ x P(x)
-    translation:
-    true when:
-    false when:
+    translation: all x's are p ish (are true of whatever p is)
+    true when: Px is true for every single element
+    false when: find one counter example
 
 2) ∃ x P(x)
-    translation:
-    true when:
-    false when:
+    translation: there exists an x thta is P-ish
+    true when:  find one example where px is true
+    false when: show that px is false for every element
 
-3) ¬(∀ x P(x))
-    translation:
-    true when:
-    false when:
+3) ¬(∀ x P(x)) // think about the inside then throw the not
+    translation: not all x's are p ish
+    true when: can find ONE example that is NOT p-ish
+    false when: all xs are p ish
 
 4) ¬(∃ x P(x))
-    translation:
-    true when:
-    false when:
+    translation: there does not exits an x that is p-ish
+    true when: show that all x's are not p-ish
+    false when: find one that x is p-ish
 
 5) ∀ x ¬P(x)
-    translation:
-    true when:
-    false when:
+    translation: all x are not p ish
+    true when: all elements have to not be P-ish
+    false when: find one counterexample where x is p ish
 
 6) ∃ x ¬P(x)
-    translation:
-    true when:
-    false when:
+    translation: every x is not p ish
+    true when: find one element where x is not p ish
+    false when: all element are  p ish
 
 //////////////////////
 
@@ -62,12 +62,24 @@ Predicates: IsSweet(x), IsPlant(x), IsVegan(x), IsMeat(x)
 
 Translate/evaluate:
     ∀ x ¬IsSweet(x)
+        All foods are not sweet
+        False: Ice cream is sweet
 
     ¬(∀ x (IsVegan(x) → IsPlant(x)))
+        //when we have a negated quatifier, evaluate the inside first
+        // all vegan foods are plants -> not all vegan food are plants
+
+        True: crackers are vegan but are not plants
 
     ¬(∃ x (IsSweet(x) ⋀ IsMeat(x)))
+        //think about inside
+        // There is a meat that is sweet -> there is not a meet that is sweet
+        true - there is no food thatis both meat and also sweet (the only meet is steak and it is not sweet)
 
-    ∃ x ¬(IsSweet(x) ⋀ IsMeat(x))
+    ∃ x ¬(IsSweet(x) ⋀ IsMeat(x))\
+        there exits a meat that is not both sweet and meat || there
+        True - Crackers
+
 
 //////////////////////
 
@@ -78,12 +90,17 @@ What do these mean in English? Are they true?
 
 
 ∀ n ∃ m (n^2 < m)
+∀ n - outer look/ pick a number
+∃ m - inner loop/ every integer
+for all integer, the square of all integers is less than some other other integer
+true: pick one more bigger
+
 
 
 
 ∀ x ∃ y (x == y^2)
 
-
+    all integers are perfect squares
 
 ¬(∀ n ∃ m (n^2 < m))
 
@@ -107,16 +124,20 @@ The sum of two negative integers is negative
 
 Domain: ℤ
 
-
-
+∀ x ∀ y (x<0 ^ x<0  →  x+y <0)
+all integers x, all integers y
+if you pick me two numbers that are negative then it will be less than 0
 
 The difference of two positive integers is
 not necessarily positive
 
     x - y
 
+    True: 5-6
 
+∃ x ∃ y(x > 0 ^ y>0 ^ (x-y) <=0)
 
+∀ x ∀ y(x > 0 ^ y>0 →
 
 
 /////////////////////////
@@ -129,12 +150,15 @@ Equivalence: DeMorgan's law (part 1).
 suppose our domain is k1 through kn
 
 
-¬(∃ x P(x)) is  equivalent to...
-
+¬(∃ x P(x)) is  equivalent to... !(p(ki)) V !p(k2) ...    = !(p(ki) ^ !(p(k2)...
+we replace the there exits with or
+∀ x ¬P(x)
 
 
 
 ∀ x (¬P(x)) is equivalent to...
+
+
 
 
 
@@ -147,7 +171,11 @@ Equivalence: DeMorgan's law (part 2).
 
 
 suppose our domain is k1 through kn
+    !(p(ki) ^ p(pk2)
 
+    !p(k1) V !p(k2)
+
+    E x !p(x)
 
 
 ¬(∀ x P(x)) is equivalent to...?
@@ -188,21 +216,36 @@ Domain: students
 
 
 A 5th grader won a prize
+    //there exists a 5th grader
 
 
 Translation:
+    E x (5th grader ^ wonPrice(x))
 
 Negation:
 
+     !(E x (5th grader ^ wonPrice(x))
 
+     //we have to turn this into simplest form where negation is not on parenthesis
+
+     (∀ x !(5th grader ^ wonPrice(x)) -> (∀ x (!5th grader || !wonPrice(x))
+
+     all students are arent in 5th grade or did not win a price
+     (for a forall we use implies)
+     p -> q == !p or Q
+
+     all 5th graders did not win a price
 ///
 
 All prize-winners were 5th graders
-
+//promise all price winners are 5th fraders
 Translation:
-
+    ∀ x (wonPrice (x) -> in5th(x)
 Negation:
-
+    !(∀ x (wonPrice (x) -> in5th(x))
+     E x !(wonPrice (x) -> in5th(x) )
+     memorize this ->  p -> q == !p or Q
+     E x !(!wonPrice(p) ^ Q)
 
 
 ///
@@ -210,10 +253,20 @@ Negation:
 A 5th grader is friends with all prize winners
 
 Translation:
+    two quantifiers
+    there excists  and all
+    ∃ x ∀ y (in 5th(x) ^ wonPrice(y) ^ friends(x,y))
+
 
 
 Negation:
 
+    !(∃ x ∀ y (in 5th(x) ^ wonPrice(y) ^ friends(x,y))
+    ∀ x ∃ y !(in 5th(x) ^ wonPrice(y) ^ friends(x,y))
+    //WE KNOW TOP LEVEL OPERATOR IS SECOND AND SO WE GET
+    ∀ x ∃ y (!(in 5th(x) ^ wonPrice(y)) ^ !friends(x,y)) //TURN INTO IMPLIES SPREAD NEGATIVE
+    ∀ x ∃ y ((in 5th(x) ^ wonPrice(y)) -> friends(x,y))
+    //FOR ALL WE TURN INTO IMPLIES
 
 ////////////////////////////////////
 
@@ -238,7 +291,7 @@ Examples -- are the following arguments valid?
 Premises: ∀ x (P(x) → Q(x)), ∃ x P(x)
 Conclusion: ∃ x Q(x)
 
-Valid or not?
+Valid or not? YES - WHICHEVER INDIVUDAL P WAS TRUE FOR, q WILL ALSO BE TRUE FOR THAT INDIVIDUAL
 
 
 ///
@@ -246,7 +299,8 @@ Valid or not?
 Premises: ∀ x P(x) : everyone in my domain is P-ish
 Conclusion: ∃ x P(x): there is someone in domain who is P-ish
 
-Valid or not?
+Valid or not? what if my domain is emptry
+p held for all elements since it was empty
 
 
 
