@@ -1,0 +1,324 @@
+HW 6 due Tuesday, October 8
+
+Exam 2 will be next Thursday, October 10
+
+--> will post review material by end of week
+--> will spend time reviewing on Tuesday, October 8
+
+//////////////////////////////////////////////////
+
+HW 5 comments:
+
+
+4. {x : x ∈ ℤ, x ≥ -5} ∪ {x : x ∈ ℤ, x ≤ 7}
+
+all integers
+
+
+5. Suppose A ⋃ B = A for two sets A and B.
+What does that tell us about A and B?
+
+B is a subset of A
+
+
+6. Suppose A ⋂ B = A for two sets A and B.
+What does that tell us about A and B?
+
+A is a subset of B
+
+
+7 (a). If A ⋃ C = B ⋃ C, must A = B?
+
+A ⋃ C = B ⋃ C = {1, 2}
+C = {1}
+
+A = {2}
+B = {1,2}
+
+
+7 (b). If A ⋂ C = B ⋂ C, must A = B?
+
+A ⋂ C = B ⋂ C = empty set
+C = {1}
+
+A = {2}
+B = {3}
+
+
+
+//////////////////////////////////////////////////
+
+Today:
+- One more example with quantifiers on sets of numbers
+- Natural deduction rules for universal quantifier
+- Begin deduction rules for existential quantifier
+
+/////////////////////////
+
+∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
+
+/////////////////////////
+
+Order of quantifiers matters.
+Suppose our domain is all integers (ℤ).
+
+
+What does this say? Is it true?
+
+    ∀ x ∃ y (x^2 == y)
+
+For all integers, their square equals some other integer
+
+(The square of an integer is an integer)
+
+True
+
+
+What does this say? Is it true?
+
+    ∃ y ∀ x (x^2 == y)
+
+There is an integer that is equal to the square of every integer
+
+False - y has to be fixed, and there is no y that is the square
+    of everything
+
+////////////////////////////////
+
+Writing predicate logic statements in Logika
+
+In Logika, ∀ x P(x) is written as:
+
+    ∀ ((x: T) => P(x))
+
+
+
+In Logika, ∃ x P(x) is written as:
+
+    ∃ ((x: T) => P(x))
+
+////////////////////////////////
+
+For-all elimination (AllE).
+
+Idea:
+
+- if we know that a statement is true for ALL individuals in
+our domain
+
+
+...then what would we know about a specific individual
+in that domain?
+
+
+
+///
+
+Rule definition:
+
+
+           ∀ ((x: T) => P(x))
+AllE[T]:  ---------------------
+                   P(v)
+
+//where v is a particular individual in the domain
+//(i.e, v has type T)
+
+
+
+///////////////////////////////
+
+Syntax:
+
+(
+    ∀ ((x: T) => Human(x))
+)
+⊢
+( Human(Socrates) )
+
+Proof(
+    1 ( ∀ ((x: T) => Human(x)) )    by Premise,
+    2 ( Human(Socrates) )           by AllE[T](1)
+)
+
+Note: This assumes "Socrates" and "Human" were both parameters
+to our proof function:
+
+
+@pure def Example[T](Human: T => B @pure, Socrates: T)
+
+
+
+///////////////////////////////
+
+Example (all1.sc)
+
+
+∀ x (inCIS301(x) → takenCIS200(x)), inCIS301(bob) ⊢ takenCIS200(bob)
+
+
+//////////////////////////////
+
+Next rule will be for all introduction.
+
+First: consider these two statements:
+
+
+∀ x (P(x) ⋀ Q(x))           (∀ x P(x)) ⋀ (∀ x Q(x))
+
+
+are they equivalent?
+    ∀ x (P(x) ⋀ Q(x))  - for all individuals, P and Q are true for them
+    (∀ x P(x)) ⋀ (∀ x Q(x)) - for all individuals, P is true AND
+                        for all individuals, Q is true
+
+
+
+how would we defend our position?
+
+
+//////////////////////////////////
+
+For-all introduction (AllI).
+
+Idea:
+
+- Suppose we show statement holds for some arbitrary individual
+    in our domain
+- That individual could have been anyone!
+
+...what can we say about that statement for all individuals in
+    our domain?
+
+
+
+///
+
+Rule definition:
+
+            Let (   (a: T) => SubProof(
+                ...
+                P(a)
+            )),
+AllI[T] : -------------------------------
+                 ∀ ((x: T) => P(x))
+
+
+//"a" is an unused, "fresh" individual
+
+
+
+Rule syntax:
+
+4 Let ( (a: T) => SubProof(
+    ...
+    P(a)
+)),
+10 ( ∀ ((x: T) => P(x)) ) by AllI[T](4)
+
+
+//a could be any (fresh) individual name
+
+
+///////////////////////////////////
+
+Example:
+
+Prove these statements are equivalent:
+
+∀ x (P(x) ⋀ Q(x))           (∀ x P(x)) ⋀ (∀ x Q(x))
+
+
+all2.sc
+
+///////////////////////////////////
+
+Are these statements equivalent?
+
+∀ x (P(x) ⋁ Q(x))           (∀ x P(x)) ⋁ (∀ x Q(x))
+
+
+
+////////////////////////////////////////
+
+Idea behind exists-introduction (ExistsI):
+
+If we find ONE individual in a domain where a statement holds
+
+...then THERE EXISTS an individual in the domain where the
+    statement holds
+
+
+
+///
+
+Rule definition:
+
+                  P(v)
+ExistsI[T]: ---------------------
+              ∃ ((x: T) => P(x) )
+
+//v is some individual of type T
+
+
+//////////////////////////////////////////
+
+Rule syntax:
+
+
+( Human(Socrates) ) ⊢ ( ∃ ((x: T) => Human(x) ))
+Proof(
+    1 ( Human(Socrates) ) by Premise,
+    2 ( ∃ ((x: T) => Human(x)) )  by ExistsI[T](1)
+)
+
+(assume "Socrates" was a parameter of type T)
+
+/////////////////////////////////////////
+
+Bigger example (exists1.sc):
+
+(
+    ∀ ((x: T) => (Human(x)->Mortal(x))),
+    Human(Socrates)
+)
+⊢ ( ∃ ((x: T) => Mortal(x) ))
+
+
+/////////////////////////////
+
+Suppose you are trying to prove this conclusion:
+
+∀ ((x: T) => P(x) ^ Q(x) -> !R(x) )
+
+Let a: T in a subproof for AllI
+    subproof with ImplyI
+        assume P(a) ^ Q(a)
+
+        subproof with NegI
+            assume R(a)
+
+            goal: F
+
+        goal: !R(a)
+
+    goal: P(a) ^ Q(a) -> !R(a)
+
+
+(This is not a complete proof, as we are missing the premises
+    we would need in order to finish each subproof. It just
+    shows the structure of how we would build such a conclusion.)
+
+////////////////////////////////////////
+
+Stopped here, will continue on Tuesday
+
+////////////////////////////////////////
+
+Putting things together: all3.sc
+
+/////////////////////////////////////////
+
+Next time:
+- more natural deduction with predicate logic
+- review for exam 2
