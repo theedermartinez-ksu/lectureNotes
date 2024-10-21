@@ -47,7 +47,7 @@ Rule summary:
                                  Let ((a: T) => SubProof(
                                     Assume( P(a) ),
             ∃((x: T) => P(x))       ...
-                                    Q
+                                    Q //doesnt do anything with the alias
                                  )),
 ExistsE[T]: ----------------------------------------------------
                      Q
@@ -62,7 +62,7 @@ Syntax:
 
 1 ( ∃((x: T) => P(x)) )         by Justification,
 2 Let ((a: T) => SubProof(
-    3 Assume ( P(a) ),
+    3 Assume ( P(a) ), //assuming he is in the group
     ...
     4 ( Q )                     by Justification
 )),
@@ -71,7 +71,7 @@ Syntax:
 
 
 --> Think of ExistsE like OrE
-    ∃ x P(x) means: P(n1) V P(n2) V ... V P(nk)
+    ∃ x P(x) means: P(n1) V P(n2) V ... V P(nk) // the logic is the same
 
 
 **If you have an ∃ statement as a claim, it is a good strategy
@@ -80,7 +80,7 @@ and plug it into your ∃ statement, as above
 
 Use ExistsE in the SAME situations you would use OrE
 
-
+// we know it holds for one, lets assume it holds for a
 //////////////////////////////
 
 Examples:
@@ -99,9 +99,9 @@ x is students
 
     --> what is this argument saying?
 
-¬(∃ x (P(x) ^ Q(x))):
+¬(∃ x (P(x) ^ Q(x))): There is NOT a student who attents kstate and KU
 
- ∀ x (P(x) → ¬Q(x)):
+ ∀ x (P(x) → ¬Q(x)): All students who attend K-state do not attend KU
 
 ////////////////////////////
 
@@ -109,12 +109,27 @@ Proof tactics for predicate logic
 
 - see if you can do anything right away with the premises
     Which rules?
+    AndE, ImplyE (if we had left hand side), AllE (if we have a named individual, we know its true about bob), ExistsI(): we introduce him to the group
 
 - look at top-level operator for what you are trying to prove
     trying to prove a "for all" statement with ∀?
 
+        Subproof with let, introduce random individual,
+            try to prove our goal about that random individual
+            (allI)
+
+
 
     trying to prove a "there exists" statement with ∃?
+        Need to show it is true for one
+        do I have that statment about that individual,
+
+        Could I use All E about a particular individual with an all statement
+
+        Do i have a three exists, statement in our premiise,
+            try Exists E on that premise to get conclusion
+
+        Really cant find anything? try PbC (PVZ)
 
 
     trying to prove an implies?

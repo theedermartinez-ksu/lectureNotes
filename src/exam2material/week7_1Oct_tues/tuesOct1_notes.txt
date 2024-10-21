@@ -95,19 +95,31 @@ What do these mean in English? Are they true?
 for all integer, the square of all integers is less than some other other integer
 true: pick one more bigger
 
+  The square of all integers is less than some other integer
+   true - for n^2, n^2 +1 is an integer that is bigger
 
 
 
 ∀ x ∃ y (x == y^2)
 
-    all integers are perfect squares
+    All integers are a perfect square
+    false - 5 is an integer that is not a perfect square
 
-¬(∀ n ∃ m (n^2 < m))
+    for all integers (x)
+        there is a y
 
 
+∀ n ∃ m (n^2 == m)
+    the square of each integer is another integer
+    (true -- integers are closed under multiplication,
+        meaning that n*n is also an integer)
 
-¬(∀ x ∃ y (x == y^2))
+∃ m ∀ n (n^2 == m)
+    we can find an integer (the SAME integer in all cases)
+    that equals the square of all integers
 
+    (false -- there is no one integer that is the square
+    of every integer)
 
 
 /////////////////////////

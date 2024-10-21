@@ -21,8 +21,11 @@ import org.sireum.justification.natded.prop._
     )
       Proof(
       1 ( !(∃((x: T) => (P(x) & Q(x)))) ) by Premise,
+      2 let((bob:T) -> SubProof(
 
+      )
 
+  // use AllI to build our goal forall statement
     )
     //@formatter:on
   )
