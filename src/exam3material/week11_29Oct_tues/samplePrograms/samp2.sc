@@ -7,7 +7,7 @@ import org.sireum._
 //it is positive or negative
 
 //what does "val" mean?
-val num: Z = Z.prompt("Enter a number: ")
+val num: Z = Z.prompt("Enter a number: ") //cannot be changed
 
 if (num > 0) {
   println(num, " is positive")

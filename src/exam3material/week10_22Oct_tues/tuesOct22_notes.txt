@@ -373,7 +373,7 @@ What's the idea of proving this in predicate logic?
 
 
 
-Direct proof:
+Direct proof:-1
 
 Let j and k be even integers. We want to show that jk is even.
 If j is even, then j = 2a for some integer a. If k is even,
