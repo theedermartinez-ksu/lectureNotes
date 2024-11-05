@@ -52,7 +52,7 @@ of basic programs.
 
 
 
-
+:0
 
 ////////////////////////////
 
@@ -80,6 +80,7 @@ study:
 Basic program #1
     - get user input number, add one to it, print it out
 
+
 Basic program #2
     - get user input number, print whether it is positive or negative
 
@@ -99,13 +100,14 @@ First: prove program correctness in "manual" mode
     (we have to process the knowledge gained
     in each statement)
 
+//we process each statement
 
 Then: prove program correctness in "auto" mode
     - we provide function contracts and loop invariants
     - checker can make sure our program meets our
     specifications
 
-
+//we wrtie specification for our programs
 ////////////////////////
 
 Preconditions: things we must assume about user input
@@ -123,6 +125,7 @@ assume statements
     - we can pull these assumptions into a proof
 
     (declaring preconditions about the input)
+    assume(num >0)// etc
 
 /////
 
@@ -131,6 +134,7 @@ assert statements
         (postconditions)
     - must prove EXACTLY that statement before we assert it
 
+assert (some claim)
 
 
 How are Logika asserts different from C# (and other languages)?
@@ -146,6 +150,7 @@ Process of validating a program:
 
 
 (any assumptions needed about user input - assume)
+
 
 program statement
 
@@ -181,7 +186,7 @@ Justifications (for now):
 
 Premise
     - something from an assume
-    - a program assignment that was just executed
+    - a program assignment that was just executed x == 2 so x is 2
         (use == to show equality in the claim)
     - something shown in a previous proof block
 
@@ -203,6 +208,9 @@ Algebra*
 ANY of your propositional/predicate logic justifications
     (especially AndE1, AndE2, AndI, OrI1, OrI2)
 
+    and e
+    and i
+    or i rule
 
 
 
@@ -248,6 +256,13 @@ Another justification: Subst
 
 
 /////////////////////////////
+we rewrite it m = lhs, n = rhs
+_> all the LHS _> RHS turn into
+_< all the LHS <_ RHS left turn into right
+
+Both substitution rules
+Subst_<(m,n) // find replace values, m is an equvalence
+Subst_>(m,n) //
 
 Subst_<(m, n)
 
@@ -280,6 +295,8 @@ Deduce(
     n ( x*(x + 1) == (x + 1) + y ),
     ...
     j ( ??? )     by Subst_<(m, n)
+
+    //start with m replace n into it
 )
 
 
@@ -338,7 +355,7 @@ Deduce(
     3 ( another == 5 - (x+2)*3 )    by Premise,
 
     //substitute in for "num" in "answer"
-
+        ( answer == 4*num + 8 )  by Subs (1,2) // 1st what we replace with and what we start with , which side is being replaced on 1, <_ (num is being replaced
     //substitute in for "x+2" in "another"
 )
 

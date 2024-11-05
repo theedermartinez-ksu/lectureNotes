@@ -88,26 +88,28 @@ Programs with division.
 
 Only numerical type in our programs?
 
+We will only look at z type
 
 --> what does that mean about division?
 
-
+7/4 = 1 no remainder integer division
 
 
 
 --> what do we need to demonstrate before using division?
 
 Deduce(
-    1 ??? //what should go here?
+    1 (b!=0) //what should go here?
+
 )
 
 x = a / b
 
 Deduce(
-    1 ??? //what should go here?
+    1 (2 != 0) by Algebra*()  //what should go here?
 )
 
-y = a / 2
+y = a / 2 bruh
 
 
 
@@ -117,20 +119,20 @@ y = a / 2
 val a: Z = num / 3
 val b: Z = num*3
 
-suppose num is 16, then a would be ?
+suppose num is 16, then a would be ? 5
 
-b would be?
+b would be? 48
 
 Deduce(
     1 ( a == num/3 ) by Premise,
 
     //is this true?
-    2 ( a*3 == num ) by Algebra*(1)
+    2 ( a*3 == num ) by Algebra*(1) //it is not equal since we lost the remainder!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     3 ( b == num*3 ) by Premise,
 
     //is this true?
-    4 ( b/3 == num ) by Algebra*(3)
+    4 ( b/3 == num ) by Algebra*(3) // we didnt lose the remainder!!!
 )
 
 /////////////////////////////
@@ -144,6 +146,7 @@ numerator % denominator
 
 modulo is only defined for:
     - nonzero "denominators"
+    //we must show that the denominator is not 0
 
 
 --> we will only consider programs with positive denominators
@@ -159,7 +162,7 @@ denominator != 0
 //what should go here?
 
 Deduce(
-    ???
+2!= 0
 )
 
 x = a % 2
@@ -179,7 +182,8 @@ Deduce(
     1 ( test == num/3 ) by Premise,
 
     //is this OK?
-    2 ( num == 3*test + num%3 ) by Algebra*(1)
+    2 ( num == 3*test + num%3 ) by Algebra*(1)// 16 = 3*5 + num
+    //we can always express division like this. number of total times plus the remainder.
 )
 
 
@@ -249,8 +253,8 @@ Deduce(
 
 if (C) {
     Deduce(
-        1 ( P ) by Premise, //why?
-        2 ( C ) by Premise  //why?
+        1 ( P ) by Premise, //why? nothing has changed since we did not change anything
+        2 ( C ) by Premise  //why? because we are in the if branch
     )
 
     claims
@@ -262,8 +266,8 @@ if (C) {
 
 } else {
     Deduce(
-        1 ( P ) by Premise,     //why?
-        2 ( !(C) ) by Premise   //why?
+        1 ( P ) by Premise,     //why? anything we had estblishd before the if else
+        2 ( !(C) ) by Premise   //why? only way we are here is !c
     )
 
     claims
@@ -275,8 +279,8 @@ if (C) {
 }
 
 Deduce(
-    1 ( Q ) by Premise,     //why?
-    2 ( A V B ) by Premise  //why?
+    1 ( Q ) by Premise,     //why? in BOTH of the if and else we get Q
+    2 ( A V B ) by Premise  //why? or elimination, we knew one or the other was true, the conclusion must hold.
 )
 
 /////////////////////////////
@@ -299,3 +303,13 @@ Next week:
 - Verifying programs with nested conditionals
     (your last HW 9 problem is like this)
 - Verifying functions
+
+
+SUBSTITUTION
+
+
+find >_  and replace with other side (where the equality, eq to replace)
+find <_  and replace with other side (where the equality, eq to replace)
+
+when doing by premise, keep track if your x chnges and you have a vairable
+that is x at the beggining, we can use it instead of x
