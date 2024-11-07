@@ -25,6 +25,8 @@ Max of 3 numbers
 
 //////////////////////////////////
 
+///substitution sub _> (x = find y = operation in the parenthesis
+this is how substitution works
 Function contracts - just under function definition:
 
 Contract(
@@ -35,9 +37,12 @@ Contract(
     Ensures(
         postcondition,
         postcondition
+        //what it returns
     )
 )
 
+Fuction contracts: specify the contidioton for contracts, stabishing what it requires
+and what it expects out
 
 Requires/preconditions:
 - any assumptions we need to make about the parameters
@@ -92,10 +97,11 @@ Four steps:
 
 2) What can the function itself do with the preconditions?
 
-
+LIST THEM ALL AS PREMISES
 
 3) What must the function do with the postconditions?
 
+PROVE EACH POSTCONDITION BASED ON THE VALUE BEING RETURNED
     if a postcondition is: Res[Z] > 0
 
     and we have:
@@ -104,7 +110,7 @@ Four steps:
 
     what do we have to prove before returning?
 
-
+answer-y  >0
 
 
 4) What can the calling code do with the postcondition after
@@ -112,6 +118,8 @@ Four steps:
 
     x = function(b+7)
 
+    we can list the postconditons as premises since it is promised that it will stick
+    to a behaviour
 
 
 

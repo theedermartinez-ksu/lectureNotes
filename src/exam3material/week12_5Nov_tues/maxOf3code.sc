@@ -26,6 +26,13 @@ if (a >= b) {
 
   if (a >= c) {
     max = a
+    Deduce(
+      1 (a >= b) by Premise,
+      2 (a>= c) by Premise,
+      3 (max == a ) by Premise,
+      4 (max >=)
+
+    )
 
   } else {
     max = c
@@ -59,3 +66,5 @@ assert(max >= a)
 assert(max >= b)
 assert(max >= c)
 assert(max == a | max == b | max == c)
+
+///we must prove the or statement in all the branches, use orI1 or OrI2 to do so
