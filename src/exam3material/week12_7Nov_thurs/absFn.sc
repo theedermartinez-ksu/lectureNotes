@@ -1,6 +1,7 @@
 // #Sireum #Logika
 //@Logika: --manual --background disabled
 
+
 import org.sireum._
 import org.sireum.justification._
 import org.sireum.justification.natded.prop._
@@ -75,12 +76,25 @@ val x: Z = -4
 //them here
 
 val ans: Z = absVal(x)
-
+// wse want to check post conditions using the value
 Deduce(
   1 ( ans >= 0 ) by Premise, //from first postcondition
-  2 ( ans == x | ans == -1 * x) by Premise, //from 2nd postcondition
-  3 ( x == -4 ) by Premise
+  2 ( ans == x | ans == -1 * x) by Premise, //from 2nd postcondition //OR eliminatoin
+  3 ( x == -4 ) by Premise,
+  4 SubProof(
+    5 (ans == x) // we want a contradition rom
+    6 (F) by Algebra*(1,3),//we can claim contradition using algebra
+    7 (ans == 4) by BottomE(6)// it has to be the other one
+  ),
+8 SubProof(
+  9 Assume (ans == -1*x)
+  10 (ans ==4) by Algebra*(9,3)
+  //want ans == 4
+),
+11(ans ==x || ans== -1*x) by OrE(2,4,8),
 
+
+//probaly bottom elimination
   //WILL FINISH ON THURSDAY
 )
 

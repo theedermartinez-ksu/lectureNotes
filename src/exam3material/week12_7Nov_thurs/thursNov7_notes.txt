@@ -84,6 +84,7 @@ while (condition) {
 We want to be able to make claims about our program after loop
 is done
 
+we waant to know that regarles of iteration, it will still hold true
 
     ...why is this more challenging than an if-statement?
 
@@ -91,13 +92,14 @@ is done
 
 //////////////////////////////
 
+
 Solution: kind of like mathematical induction
 
 Come up with a loop INVARIANT that summarizes the behavior
 in a loop
 
-- invariant should be true before loop begins
-- should be STILL true at the end of each iteration
+- invariant should be true before loop begins - invariant should hold true, since we might not enter a loop
+- should be STILL true at the end of each iteration - i might not enter a last one.
 
 
 Steps to proving correctness of a loop:
@@ -107,23 +109,26 @@ Steps to proving correctness of a loop:
 
     (what is this like in mathematical induction?)
 
+    base case
+
 
 2) Assume the invariant is true at the beginning of an iteration.
     Prove the invariant still holds at the end of the iteration.
 
     (what is this like in mathematical induction?)
 
+    inductive step
 
 /////////////////////////
 
 When loop ends, you know two things:
     1) About the invariant?
 
-
+    the invariant is true, we can list it as a premise
 
     2) About the loop condition?
 
-
+    the invariant is false, we exited the loop
 
 If your loop is in a function, you can use those two pieces
 to prove the postcondition of the function.
@@ -135,15 +140,15 @@ to prove the postcondition of the function.
 Loop invariant block: just inside the loop
 
 
-//prove invariants here
+//prove invariants here in the base case
 while (condition) {
     Invariant(
-        Modifies(list all variables modified in loop)
+        Modifies(list all variables modified in loop) //listing out the variables that might change.
         invariant1,
         invariant2,
         ...
     )
-
+//////////////////inductive step///////////////
     //use invariants as a premise
 
     code for the loop

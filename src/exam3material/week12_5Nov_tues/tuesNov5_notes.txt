@@ -121,11 +121,6 @@ answer-y  >0
     we can list the postconditons as premises since it is promised that it will stick
     to a behaviour
 
-
-
-
-
-
 /////////////////////////////////
 
 Example: put our abs code in a function (absFn.sc)
@@ -136,20 +131,22 @@ Recursive functions
 
 - exactly the same idea
 
-if (base case condition) {
+if (base case condition) { // to t
     answer = base case
 } else {
 
-    //prove the precondition for the recursive call
+    //prove the precondition for the recursive call for the parameters passed in the recursive call
 
     recursive call
 
-    //use its postcondition as a premise
+    //use its postcondition from the recusive call toward whatever condition we are doing
 
     answer = recursive call case
 }
 
 //if we want some postcondition, prove it in both if and else
+
+//prove postcondition
 
 return answer
 
