@@ -43,8 +43,10 @@ Default/manual mode - what we've been doing.
 auto mode - only needs function contracts and invariant blocks.
     --> can do all intermediate reasoning itself.
 
+
 --> Mode is defined in your "starter" files at the top
 
+Automatic mode will do intermeidate reasoning, we dont need to deduce after while etc
 
 
 For manual:
@@ -67,7 +69,7 @@ Example: See what we can change in multiplication example
 
 ///////////////////////////
 
-Sequences. (like an array or list)
+Sequences. (like an array or list) //////////////new topic
 
 --> see sequence operations (seqOp.sc)
 
@@ -82,28 +84,32 @@ Making claims about sequences.
 
 Suppose "seq" is our sequence
 
-∀ (lower until upper)(k => some statement about seq(k) )
-    (does NOT include upper)
+(0 until seq.size)
+
+∀ (lower until upper)(k => some statement about seq(k) ) // for all(starting at zero upto but not including the last number)(for each loop
+    (does NOT include upper)   // => statement
 
 ∀ (lower to upper)(k => some statement about seq(k) )
     (DOES include upper)
 
-Similarly, can use ∃
+ (0 until seq.size)(k => seq(k) ==0 )
 
+    Similarly, can use ∃// there is some element 0
 
+// all elements in our sequence etc we are making predicate logic
 ///////////////////////////
 
 Writing function contract for function with a sequence:
 
-- Requires: include any requirements about sequence size
-    include any requirements about index parameters to make
+- Requires: include any requirements about sequence size // require size of a sequence.
+    include any requirements about index parameters to make // (to avoid indexing issue, non negative and lessthan the size)
     sure they're in bounds.
-- Modifies: needed if the function changes a sequence
+- Modifies: needed if the function changes a sequence // like looping variant, sequnce are references thus yes
 - Ensures:
-    Describe the value of EVERY element in the sequence
+    Describe the value of EVERY element in the sequence  //
         by the end of the function call
 
-
+// the new value is the new value, instead of old we use In(seq)
 
 Use "In(seq)"" refers to the state of a sequence at the
     beginning of the function call
